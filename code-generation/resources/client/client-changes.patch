@@ -1,0 +1,118 @@
+diff -ruN ./ga4gh-beacon-client-original/ga4gh_beacon_client/models/beacon_configuration_schema.py ./ga4gh-beacon-client/ga4gh_beacon_client/models/beacon_configuration_schema.py
+--- ./ga4gh-beacon-client-original/ga4gh_beacon_client/models/beacon_configuration_schema.py	2024-07-25 15:24:32
++++ ./ga4gh-beacon-client/ga4gh_beacon_client/models/beacon_configuration_schema.py	2024-07-25 15:26:20
+@@ -19,6 +19,7 @@
+
+ from pydantic import BaseModel, ConfigDict, Field, StrictStr
+ from typing import Any, ClassVar, Dict, List, Optional
++from ga4gh_beacon_client.models.entry_type_definition import EntryTypeDefinition
+ from ga4gh_beacon_client.models.maturity_attributes import MaturityAttributes
+ from ga4gh_beacon_client.models.security_attributes import SecurityAttributes
+ from typing import Optional, Set
+@@ -36,7 +37,7 @@
+     maturity_attributes: MaturityAttributes = Field(alias="maturityAttributes")
+     security_attributes: Optional[SecurityAttributes] = Field(
+         default=None, alias="securityAttributes")
+-    entry_types: Dict[str, Dict[str, Any]] = Field(
++    entry_types: Dict[str, EntryTypeDefinition] = Field(
+         description=
+         "This is a dictionary of the entry types implemented in this Beacon instance.",
+         alias="entryTypes")
+diff -ruN ./ga4gh-beacon-client-original/ga4gh_beacon_client/models/collections_response.py ./ga4gh-beacon-client/ga4gh_beacon_client/models/collections_response.py
+--- ./ga4gh-beacon-client-original/ga4gh_beacon_client/models/collections_response.py	2024-07-25 15:24:32
++++ ./ga4gh-beacon-client/ga4gh_beacon_client/models/collections_response.py	2024-07-25 15:33:10
+@@ -24,6 +24,9 @@
+ from typing import Union, List, Set, Optional, Dict
+ from typing_extensions import Literal, Self
+
++from ga4gh_beacon_client.models.beacon_response_meta import BeaconResponseMeta
++from ga4gh_beacon_client.models.granularity import Granularity
++
+ COLLECTIONSRESPONSE_ONE_OF_SCHEMAS = [
+     "BeaconBooleanResponse", "BeaconCollectionsResponse", "BeaconCountResponse"
+ ]
+@@ -114,6 +117,25 @@
+         instance = cls.model_construct()
+         error_messages = []
+         match = 0
++
++        meta_dict = json.loads(json_str).get("meta")
++        meta = BeaconResponseMeta.from_dict(meta_dict)
++        granularity = meta.returned_granularity
++
++        if granularity == Granularity.BOOLEAN:
++            instance.actual_instance = BeaconBooleanResponse.from_json(
++                json_str)
++            return instance
++
++        if granularity == Granularity.COUNT:
++            instance.actual_instance = BeaconCountResponse.from_json(
++                json_str)
++            return instance
++
++        if granularity == Granularity.RECORD:
++            instance.actual_instance = BeaconCollectionsResponse.from_json(
++                json_str)
++            return instance
+
+         # deserialize data into BeaconBooleanResponse
+         try:
+diff -ruN ./ga4gh-beacon-client-original/ga4gh_beacon_client/models/entry_types_schema.py ./ga4gh-beacon-client/ga4gh_beacon_client/models/entry_types_schema.py
+--- ./ga4gh-beacon-client-original/ga4gh_beacon_client/models/entry_types_schema.py	2024-07-25 15:24:32
++++ ./ga4gh-beacon-client/ga4gh_beacon_client/models/entry_types_schema.py	2024-07-25 15:26:42
+@@ -22,6 +22,7 @@
+ from typing import Optional, Set
+ from typing_extensions import Self
+
++from ga4gh_beacon_client.models.entry_type_definition import EntryTypeDefinition
+
+ class EntryTypesSchema(BaseModel):
+     """
+@@ -29,7 +30,7 @@
+     """
+
+   # noqa: E501
+-    entry_types: Dict[str, Dict[str, Any]] = Field(
++    entry_types: Dict[str, EntryTypeDefinition] = Field(
+         description=
+         "This is a dictionary of the entry types implemented in this Beacon instance.",
+         alias="entryTypes")
+diff -ruN ./ga4gh-beacon-client-original/ga4gh_beacon_client/models/results_ok_response.py ./ga4gh-beacon-client/ga4gh_beacon_client/models/results_ok_response.py
+--- ./ga4gh-beacon-client-original/ga4gh_beacon_client/models/results_ok_response.py	2024-07-25 15:24:32
++++ ./ga4gh-beacon-client/ga4gh_beacon_client/models/results_ok_response.py	2024-07-25 15:33:57
+@@ -24,6 +24,9 @@
+ from typing import Union, List, Set, Optional, Dict
+ from typing_extensions import Literal, Self
+
++from ga4gh_beacon_client.models.beacon_response_meta import BeaconResponseMeta
++from ga4gh_beacon_client.models.granularity import Granularity
++
+ RESULTSOKRESPONSE_ONE_OF_SCHEMAS = [
+     "BeaconBooleanResponse", "BeaconCountResponse", "BeaconResultsetsResponse"
+ ]
+@@ -113,6 +116,25 @@
+         instance = cls.model_construct()
+         error_messages = []
+         match = 0
++
++        meta_dict = json.loads(json_str).get("meta")
++        meta = BeaconResponseMeta.from_dict(meta_dict)
++        granularity = meta.returned_granularity
++
++        if granularity == Granularity.BOOLEAN:
++            instance.actual_instance = BeaconBooleanResponse.from_json(
++                json_str)
++            return instance
++
++        if granularity == Granularity.COUNT:
++            instance.actual_instance = BeaconCountResponse.from_json(
++                json_str)
++            return instance
++
++        if granularity == Granularity.RECORD:
++            instance.actual_instance = BeaconResultsetsResponse.from_json(
++                json_str)
++            return instance
+
+         # deserialize data into BeaconBooleanResponse
+         try:

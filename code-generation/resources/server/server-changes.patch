@@ -1,0 +1,53 @@
+diff -ruN ./ga4gh-beacon-server-original/ga4gh_beacon_server/models/ontology_term.py ./ga4gh-beacon-server/ga4gh_beacon_server/models/ontology_term.py
+--- ./ga4gh-beacon-server-original/ga4gh_beacon_server/models/ontology_term.py	2024-07-26 11:42:17
++++ ./ga4gh-beacon-server/ga4gh_beacon_server/models/ontology_term.py	2024-07-26 11:44:06
+@@ -66,7 +66,7 @@
+                 "Invalid value for `id`, must not be `None`")  # noqa: E501
+         if id is not None and not re.search(r'^\w[^:]+:.+$', id):  # noqa: E501
+             raise ValueError(
+-                "Invalid value for `id`, must be a follow pattern or equal to `/^\w[^:]+:.+$/`"
++                "Invalid value for `id`"
+             )  # noqa: E501
+
+         self._id = id
+diff -ruN ./ga4gh-beacon-server-original/ga4gh_beacon_server/models/security_attributes.py ./ga4gh-beacon-server/ga4gh_beacon_server/models/security_attributes.py
+--- ./ga4gh-beacon-server-original/ga4gh_beacon_server/models/security_attributes.py	2024-07-26 11:42:17
++++ ./ga4gh-beacon-server/ga4gh_beacon_server/models/security_attributes.py	2024-07-26 11:43:26
+@@ -17,7 +17,7 @@
+
+     def __init__(self,
+                  default_granularity=Granularity.BOOLEAN,
+-                 security_levels=[CONTROLLED]):  # noqa: E501
++                 security_levels=['CONTROLLED']):  # noqa: E501
+         """SecurityAttributes - a model defined in OpenAPI
+
+         :param default_granularity: The default_granularity of this SecurityAttributes.  # noqa: E501
+diff -ruN ./ga4gh-beacon-server-original/ga4gh_beacon_server/openapi/openapi.yaml ./ga4gh-beacon-server/ga4gh_beacon_server/openapi/openapi.yaml
+--- ./ga4gh-beacon-server-original/ga4gh_beacon_server/openapi/openapi.yaml	2024-07-26 11:42:17
++++ ./ga4gh-beacon-server/ga4gh_beacon_server/openapi/openapi.yaml	2024-07-26 11:43:02
+@@ -4738,12 +4738,6 @@
+       - setType
+       title: ResultsetInstance
+       type: object
+-    $schema:
+-      description: Refers to the JSON Schema which describes the set of valid attributes
+-        for this particular document type. This attribute is mostly used in schemas
+-        that should be tested in Beacon implementations.
+-      title: $schema
+-      type: string
+     beaconRequestMeta:
+       description: Meta section of the Beacon request. It includes request context
+         details relevant for the Beacon server when processing the request.
+@@ -4847,10 +4841,10 @@
+           title: id
+           type: string
+         operator:
+-          default: =
++          default: '='
+           description: Defines how the value relates to the field `id`.
+           enum:
+-          - =
++          - '='
+           - <
+           - '>'
+           - '!'

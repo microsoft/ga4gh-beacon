@@ -1,0 +1,13 @@
+{
+  "host": "http://127.0.0.1:4010",
+  "api_key": null,
+  "api_key_prefix": null,
+  "username": null,
+  "password": null,
+  "access_token": null,
+  "server_index": null,
+  "server_variables": null,
+  "server_operation_index": null,
+  "server_operation_variables": null,
+  "ssl_ca_cert": null
+}

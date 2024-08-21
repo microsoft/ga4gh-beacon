@@ -1,0 +1,18 @@
+{
+    "version": "0.2",
+    "language": "en",
+    "ignorePaths": [
+        "**/.venv/**",
+        "**/.pytest_cache/**",
+        "**/__pycache__/**"
+    ],
+    "dictionaries": [
+        "python"
+    ],
+    "words": [
+        "biosample",
+        "biosamples",
+        "resultset",
+        "resultsets"
+    ]
+}

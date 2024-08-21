@@ -1,0 +1,20 @@
+generatorName: python-flask
+enablePostProcessFile: true
+skipValidateSpec: false
+inlineSchemaNameMappings:
+  ga4gh_service_info_1_0_0_schema_organization: Organization
+  beaconConfigurationSchema_maturityAttributes: MaturityAttributes
+  beaconConfigurationSchema_securityAttributes: SecurityAttributes
+  beaconCollectionsResponse_response: BeaconCollectionsResponseObject
+  getAnalyses_200_response: ResultsOKResponse
+  getCohorts_200_response: CollectionsResponse
+  getBeaconRoot_default_response: BeaconErrorResponse
+additionalProperties:
+  projectName: ga4gh-beacon-server
+  packageName: ga4gh_beacon_server
+  packageVersion: 1.0.0
+  packageUrl: https://github.com/microsoft/ga4gh-beacon
+  verbose: true
+  generateSourceCodeOnly: false
+  useOneOfDiscriminatorLookup: false
+  testsUsePythonSrcRoot: true

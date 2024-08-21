@@ -1,0 +1,9 @@
+{
+  "engines": {
+    "node": ">=18.20.1"
+  },
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.13.4",
+    "@stoplight/prism-cli": "^5.8.3"
+  }
+}
