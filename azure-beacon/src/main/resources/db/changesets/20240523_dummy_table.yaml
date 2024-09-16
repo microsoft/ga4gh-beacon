@@ -1,0 +1,23 @@
+# Dummy table to test migration
+databaseChangeLog:
+- changeSet:
+    id: Dummy changeset for testing purposes only.
+    author: sergiygetlin
+    changes:
+    - createTable:
+        tableName: dummy
+        remarks: |
+          This table is for test purposes only.
+        columns:
+          - column:
+              name: dummy_id
+              type: uuid
+              constraints:
+                primaryKey: true
+                nullable: false
+          - column:
+              name: data
+              type: text
+              constraints:
+                nullable: false
+                unique: false
