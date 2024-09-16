@@ -1,0 +1,32 @@
+name: Build and Test
+
+on:
+  pull_request:
+    branches: [ '**' ]
+  push:
+    paths-ignore: [ '*.md' ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./azure-beacon
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+        
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build all projects without running tests
+        run: ./gradlew --build-cache build -x test
