@@ -28,5 +28,4 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build all projects without running tests
-        run: chmod +x gradlew |
-            ./gradlew --build-cache build -x test
+        run: ./gradlew --build-cache build -x test
