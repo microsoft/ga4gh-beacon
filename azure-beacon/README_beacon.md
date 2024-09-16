@@ -206,28 +206,6 @@ Prerequisites: Local database instance should be already started.
 
 -----------------------------------------------
 
-<!-----------------------[  Access  ]-----------------------<recommended> section below------------------>
-## Access
-
-<!-- 
-INSTRUCTIONS:
-- Please use this section to reduce the all-too-common friction & pain of getting read access and role-based permissions 
-  to repos inside Microsoft. Please cover (a) Gaining a role with read, write, other permissions. (b) sharing a link to 
-  this repository such that people who are not members of the organization can access it.
-- If the repository is set to internalVisibility, you may also want to refer to the "Sharing a Link to this Repository" sub-section 
-of the [README-Template instructions](https://aka.ms/StartRight/README-Template/Instructions#sharing-a-link-to-this-repository) so new GitHub EMU users know to get 1ES-Enterprise-Visibility MyAccess group access and therefore will have read rights to any repo set to internalVisibility.
-
-How to Evaluate & Examples:
-  - https://aka.ms/StartRight/README-Template/Instructions#how-to-share-an-accessible-link-to-this-repository
--->
-
-
-<!---- [TODO]  CONTENT GOES BELOW ------->
-
-<!------====-- CONTENT GOES ABOVE ------->
-
-
-<!-----------------------[  Contributing  ]-----------------<recommended> section below------------------>
 ## Contributing
 
 <!--
@@ -292,55 +270,3 @@ _The creators of this repository **DO NOT EXPECT REUSE**._
 If you do use it, please let us know via an email or 
 leave a note in an issue, so we can best understand the value of this repository.
 <!------====-- CONTENT GOES ABOVE ------->
-
-
-<!-----------------------[  Limitations  ]----------------------<optional> section below----------------->
-
-<!-- 
-### Limitations 
---> 
-
-<!-- 
-INSTRUCTIONS:
-- Use this section to make readers aware of any complications or limitations that they need to be made aware of.
-  - State:
-    - Export restrictions
-    - If telemetry is collected
-    - Dependencies with non-typical license requirements or limitations that need to not be missed. 
-    - trademark limitations
- 
-How to Evaluate & Examples:
-  - https://aka.ms/StartRight/README-Template/Instructions#limitations
--->
-
-<!---- [TODO]  CONTENT GOES BELOW ------->
-
-<!------====-- CONTENT GOES ABOVE ------->
-
---------------------------------------------
-
-
-<!-----------------------[  Links to Platform Policies  ]-------<recommended> section below-------------->
-## How to Accomplish Common User Actions
-<!-- 
-INSTRUCTIONS: 
-- This section links to information useful to any user of this repository new to internal GitHub policies & workflows.
--->
-
- If you have trouble doing something related to this repository, please keep in mind that the following actions require 
- using [GitHub inside Microsoft (GiM) tooling](https://aka.ms/gim/docs) and not the normal GitHub visible user interface!
-- [Switching between EMU GitHub and normal GitHub without logging out and back in constantly](https://aka.ms/StartRight/README-Template/maintainingMultipleAccount)
-- [Creating a repository](https://aka.ms/StartRight)
-- [Changing repository visibility](https://aka.ms/StartRight/README-Template/policies/jit) 
-- [Gaining repository permissions, access, and roles](https://aka.ms/StartRight/README-TEmplates/gim/policies/access)
-- [Enabling easy access to your low sensitivity and widely applicable repository by setting it to Internal Visibility and having any FTE who wants to see it join the 1ES Enterprise Visibility MyAccess Group](https://aka.ms/StartRight/README-Template/gim/innersource-access)
-- [Migrating repositories](https://aka.ms/StartRight/README-Template/troubleshoot/migration)
-- [Setting branch protection](https://aka.ms/StartRight/README-Template/gim/policies/branch-protection)
-- [Setting up GitHubActions](https://aka.ms/StartRight/README-Template/policies/actions)
-- [and other actions](https://aka.ms/StartRight/README-Template/gim/policies)
-
-This README started as a template provided as part of the 
-[StartRight](https://aka.ms/gim/docs/startright) tool that is used to create new repositories safely. Feedback on the
-[README template](https://aka.ms/StartRight/README-Template) used in this repository is requested as an issue. 
-
-<!-- version: 2023-04-07 [Do not delete this line, it is used for analytics that drive template improvements] -->
