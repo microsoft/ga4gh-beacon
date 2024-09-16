@@ -3,8 +3,6 @@ name: Build and Test
 on:
   pull_request:
     branches: [ '**' ]
-  push:
-    paths-ignore: [ '*.md' ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
@@ -25,7 +23,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '17'
-          distirubtion: 'temurin'
+          distribution: 'temurin'
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
