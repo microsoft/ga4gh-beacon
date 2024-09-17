@@ -11,7 +11,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type varchar(25)
+                  type: varchar(25)
                   remarks: |
                     Individual identifier (internal ID).
                   constraints:
