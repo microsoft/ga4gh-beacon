@@ -14,9 +14,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Slf4j
 public class DatasetDao {
-  private String SELECT_DATASET_QUERY = "select * from datasets where id = :id";
+  private String SELECT_DATASET_QUERY = "select * from dataset where id = :id";
   // no paging at this time.
-  private String LIST_DATASET_QUERY = "select * from datasets";
+  private String LIST_DATASET_QUERY = "select * from dataset";
 
   private static final RowMapper<Dataset> datasetRowMapper =
       (rs, num) -> new Dataset(rs.getString("id"), rs.getString("name"));

@@ -5,7 +5,7 @@ databaseChangeLog:
     author: yuliadub
     changes:
     - createTable:
-        tableName: datasets
+        tableName: dataset
         remarks: |
           This table will store dataset information.
         columns:
