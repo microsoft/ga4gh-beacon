@@ -1,6 +1,6 @@
 # GA4GH Beacon Code Generation
 
-This folder contains scripts to generate the [GA4GH Beacon v2 API](https://docs.genomebeacons.org/) client and server code in Python. The scripts use the OpenAPI specification files in the [repository](https://github.com/ga4gh-beacon/beacon-v2) for Beacon v2.
+This folder contains scripts to generate the [GA4GH Beacon v2 API](https://docs.genomebeacons.org/) client and serve code in Python. The scripts use the OpenAPI specification files in the [repository](https://github.com/ga4gh-beacon/beacon-v2) for Beacon v2.
 
 The output of the code generation is the following libraries:
 
