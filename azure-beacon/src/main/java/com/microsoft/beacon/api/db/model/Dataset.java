@@ -14,6 +14,8 @@ public class Dataset {
   public Dataset(String id, String name) {
     this.Id = id;
     this.Name = name;
+    this.CreateDateTime = LocalDateTime.now();
+    this.UpdateDateTime = LocalDateTime.now();
   }
 
   public String getId() {
