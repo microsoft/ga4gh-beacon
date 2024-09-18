@@ -35,7 +35,7 @@ public class DatasetsApiController implements DatasetsApi {
     var datasets = dataService.getDatasets();
     List<Object> urls = new ArrayList<Object>();
     for (Dataset set : datasets) {
-      urls.add(set.ExternalUrl);
+      urls.add(set.Name + ", " + set.Description + ", " + set.ExternalUrl);
     }
 
     boolean datasetNotempty = datasets != null && !datasets.isEmpty() ? true : false;
