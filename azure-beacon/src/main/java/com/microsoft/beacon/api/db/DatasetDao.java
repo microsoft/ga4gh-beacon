@@ -20,7 +20,11 @@ public class DatasetDao {
 
   private static final RowMapper<Dataset> datasetRowMapper =
       (rs, num) ->
-          new Dataset(rs.getString("id"), rs.getString("name"), rs.getString("externalUrl"));
+          new Dataset(
+              rs.getString("id"),
+              rs.getString("name"),
+              rs.getString("externalUrl"),
+              rs.getString("description"));
 
   private final NamedParameterJdbcTemplate jdbcTemplate;
 

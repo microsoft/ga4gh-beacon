@@ -69,7 +69,7 @@ public class DatasetsApiController implements DatasetsApi {
   public ResponseEntity<GetOneDataset200Response> postOneDataset(
       String id, BeaconRequestBody beaconRequestBody) {
     var dataset = dataService.getDataset(id);
-     // needs to be implemented to support Beacon format
+    // needs to be implemented to support Beacon format
     return new ResponseEntity<GetOneDataset200Response>(HttpStatus.OK);
   }
 }
