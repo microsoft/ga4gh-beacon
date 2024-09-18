@@ -6,6 +6,8 @@
 # gradle specific folder/files
 build/
 .gradle/
+.ipynb_checkpoints/
+jupyter/.ipynb_checkpoints/
 
 # User-specific files
 *.rsuser
