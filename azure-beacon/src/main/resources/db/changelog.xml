@@ -6,4 +6,6 @@
     <include file="changesets/20240916_datasets_table_init.yaml" relativeToChangelogFile="true"/>
     <include file="changesets/20240917_individual_table_fk_ds_ethn.yaml" relativeToChangelogFile="true"/>
     <include file="changesets/20240918_datasets_table_add_url.yaml" relativeToChangelogFile="true"/>
+    <include file="changesets/20240918_diseases_table_init.yaml" relativeToChangelogFile="true"/>
+    <include file="changesets/20240918_individual_desease_table_init.yaml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
