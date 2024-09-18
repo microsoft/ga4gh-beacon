@@ -36,6 +36,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 @Tag(
     name = "GET Endpoints",
     description = "Available endpoints in this API. All of them have a POST counterpart.")
+@SuppressWarnings("PMD")
 public interface DatasetsApi {
 
   default Optional<NativeWebRequest> getRequest() {
