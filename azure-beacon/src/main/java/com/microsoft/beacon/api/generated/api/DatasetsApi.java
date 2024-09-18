@@ -6,6 +6,7 @@ package com.microsoft.beacon.generated.api;
 
 import com.microsoft.beacon.generated.model.BeaconFilteringTermsResponse;
 import com.microsoft.beacon.generated.model.BeaconRequestBody;
+import com.microsoft.beacon.generated.model.BeaconResultsetsResponse;
 import com.microsoft.beacon.generated.model.GetDatasets200Response;
 import com.microsoft.beacon.generated.model.GetOneDataset200Response;
 import io.swagger.v3.oas.annotations.Operation;
@@ -71,7 +72,7 @@ public interface DatasetsApi {
       method = RequestMethod.GET,
       value = "/datasets",
       produces = {"application/json"})
-  default ResponseEntity<GetDatasets200Response> getDatasets(
+  default ResponseEntity<BeaconResultsetsResponse> getDatasets(
       @Parameter(
               name = "requestedSchema",
               description =

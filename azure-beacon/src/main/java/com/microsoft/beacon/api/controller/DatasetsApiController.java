@@ -1,5 +1,6 @@
 package com.microsoft.beacon.api.controller;
 
+import com.microsoft.beacon.api.db.model.Dataset;
 import com.microsoft.beacon.api.service.DatasetService;
 import com.microsoft.beacon.generated.api.DatasetsApi;
 import com.microsoft.beacon.generated.model.BeaconRequestBody;
@@ -7,7 +8,6 @@ import com.microsoft.beacon.generated.model.BeaconResponseMeta;
 import com.microsoft.beacon.generated.model.BeaconResultsets;
 import com.microsoft.beacon.generated.model.BeaconResultsetsResponse;
 import com.microsoft.beacon.generated.model.BeaconSummaryResponseSection;
-import com.microsoft.beacon.generated.model.GetDatasets200Response;
 import com.microsoft.beacon.generated.model.GetOneDataset200Response;
 import com.microsoft.beacon.generated.model.Granularity;
 import com.microsoft.beacon.generated.model.ResultsetInstance;
@@ -30,9 +30,14 @@ public class DatasetsApiController implements DatasetsApi {
   }
 
   @Override
-  public ResponseEntity<GetDatasets200Response> getDatasets(
+  public ResponseEntity<BeaconResultsetsResponse> getDatasets(
       String requestedSchema, Integer skip, Integer limit, List<String> filters) {
-    List<Dataset> datasets = dataService.getDatasets();
+    var datasets = dataService.getDatasets();
+    List<Object> urls = new ArrayList<Object>();
+    for (Dataset set : datasets) {
+      urls.add(set.ExternalUrl);
+    }
+
     boolean datasetNotempty = datasets != null && !datasets.isEmpty() ? true : false;
     // BeaconReceivedRequestSummary and List<@Valid SchemasPerEntity> will be null for now
     // this will for starters only support granularity of "record"
@@ -40,7 +45,7 @@ public class DatasetsApiController implements DatasetsApi {
         new BeaconResponseMeta("v2.0", "org.example.beacon.v2", null, Granularity.RECORD, null);
     ResultsetInstance resultsCollection =
         new ResultsetInstance(
-            datasetNotempty, "org.example.beacon.v2", datasets, datasets.size(), "dataset");
+            datasetNotempty, "org.example.beacon.v2", urls, datasets.size(), "dataset");
     List<ResultsetInstance> elements = new ArrayList<ResultsetInstance>();
     elements.add(resultsCollection);
     BeaconResultsets results = new BeaconResultsets(elements);
@@ -50,19 +55,19 @@ public class DatasetsApiController implements DatasetsApi {
 
     BeaconResultsetsResponse responseFull = new BeaconResultsetsResponse(meta, results, response);
 
-    return new ResponseEntity<GetDatasets200Response>(responseFull, HttpStatus.OK);
+    return new ResponseEntity<>(responseFull, HttpStatus.OK);
   }
 
   @Override
-  public ResponseEntity<GetDatasets200Response> getOneDataset(String id, String requestedSchema) {
+  public ResponseEntity<GetOneDataset200Response> getOneDataset(String id, String requestedSchema) {
     var dataset = dataService.getDataset(id);
-    return new ResponseEntity<>(HttpStatus.OK);
+    return new ResponseEntity<GetOneDataset200Response>(HttpStatus.OK);
   }
 
   @Override
   public ResponseEntity<GetOneDataset200Response> postOneDataset(
       String id, BeaconRequestBody beaconRequestBody) {
     var dataset = dataService.getDataset(id);
-    return new ResponseEntity<>(HttpStatus.OK);
+    return new ResponseEntity<GetOneDataset200Response>(HttpStatus.OK);
   }
 }
