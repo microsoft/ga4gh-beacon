@@ -16,11 +16,6 @@ public class DatasetService {
     this.datasetDao = datasetDao;
   }
 
-  public String getTestMessage() {
-    log.info("Info message.");
-    return "Beacon API welcomes you!";
-  }
-
   public void insertDatasetData(String datasetId, String data) {
     // TBI
   }
