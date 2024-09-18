@@ -1,4 +1,4 @@
-package com.microsoft.beacon.generated.api;
+package com.microsoft.beacon.api.generated.api;
 
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;

@@ -1,10 +1,10 @@
 package com.microsoft.beacon.api.controller;
 
 import com.microsoft.beacon.api.db.model.Individual;
+import com.microsoft.beacon.api.generated.api.IndividualsApi;
+import com.microsoft.beacon.api.generated.model.individual.GetIndividuals200Response;
+import com.microsoft.beacon.api.generated.model.individual.IncludeResultsetResponses;
 import com.microsoft.beacon.api.service.IndividualService;
-import com.microsoft.beacon.generated.api.IndividualsApi;
-import com.microsoft.beacon.generated.model.individual.GetIndividuals200Response;
-import com.microsoft.beacon.generated.model.individual.IncludeResultsetResponses;
 import jakarta.annotation.Generated;
 import java.util.Collections;
 import java.util.List;
