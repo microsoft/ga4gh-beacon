@@ -2,6 +2,7 @@ package com.microsoft.beacon.api.service;
 
 import com.microsoft.beacon.api.db.DatasetDao;
 import com.microsoft.beacon.api.db.model.Dataset;
+import java.util.List;
 import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,8 @@ public class DatasetService {
     this.datasetDao = datasetDao;
   }
 
-  public void insertDatasetData(String datasetId, String data) {
-    // TBI
+  public List<Dataset> getDatasets() {
+    return datasetDao.listDatasets();
   }
 
   public Optional<Dataset> getDataset(String datasetId) {
