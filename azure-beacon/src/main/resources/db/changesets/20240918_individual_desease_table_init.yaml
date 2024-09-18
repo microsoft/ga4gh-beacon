@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: Initial schema for a disease entry.
+      author: sergiygetlin
+      changes:
+        - createTable:
+            tableName: individual_disease
+            remarks: |
+              Associative table to represents many-to-many relationship between individual and disease
+            columns:
+              - column:
+                  name: individual_id
+                  type: varchar(25)
+                  remarks: |
+                    Individual identifier.
+                  constraints:
+                    nullable: false
+                    references: individual(id)
+                    foreignKeyName: fk_individual_id
+              - column:
+                  name: disease_id
+                  type: varchar(25)
+                  remarks: |
+                    Disease identifier.
+                  constraints:
+                    nullable: false
+                    references: disease(id)
+                    foreignKeyName: fk_disease_id
+        - addPrimaryKey:
+            tableName: individual_disease
+            columnNames: individual_id, disease_id
+            constraintName: pk_ind_dis
