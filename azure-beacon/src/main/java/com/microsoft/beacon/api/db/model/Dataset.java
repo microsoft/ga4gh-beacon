@@ -12,10 +12,11 @@ public class Dataset {
   public LocalDateTime CreateDateTime;
   public LocalDateTime UpdateDateTime;
 
-  public Dataset(String id, String name, String externalUrl) {
+  public Dataset(String id, String name, String externalUrl, String description) {
     this.Id = id;
     this.Name = name;
     this.ExternalUrl = externalUrl;
+    this.Description = description;
     this.CreateDateTime = LocalDateTime.now();
     this.UpdateDateTime = LocalDateTime.now();
   }
