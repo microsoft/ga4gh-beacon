@@ -1,17 +1,16 @@
 package com.microsoft.beacon.api.controller;
 
 import com.microsoft.beacon.api.db.model.Dataset;
+import com.microsoft.beacon.api.generated.api.DatasetsApi;
+import com.microsoft.beacon.api.generated.model.dataset.BeaconRequestBody;
+import com.microsoft.beacon.api.generated.model.dataset.BeaconResponseMeta;
+import com.microsoft.beacon.api.generated.model.dataset.BeaconResultsets;
+import com.microsoft.beacon.api.generated.model.dataset.BeaconResultsetsResponse;
+import com.microsoft.beacon.api.generated.model.dataset.BeaconSummaryResponseSection;
+import com.microsoft.beacon.api.generated.model.dataset.GetOneDataset200Response;
+import com.microsoft.beacon.api.generated.model.dataset.Granularity;
+import com.microsoft.beacon.api.generated.model.dataset.ResultsetInstance;
 import com.microsoft.beacon.api.service.DatasetService;
-import com.microsoft.beacon.generated.api.DatasetsApi;
-import com.microsoft.beacon.generated.model.BeaconRequestBody;
-import com.microsoft.beacon.generated.model.BeaconResponseMeta;
-import com.microsoft.beacon.generated.model.BeaconResultsets;
-import com.microsoft.beacon.generated.model.BeaconResultsetsResponse;
-import com.microsoft.beacon.generated.model.BeaconSummaryResponseSection;
-import com.microsoft.beacon.generated.model.GetOneDataset200Response;
-import com.microsoft.beacon.generated.model.Granularity;
-import com.microsoft.beacon.generated.model.ResultsetInstance;
-import jakarta.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -14,12 +14,20 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Slf4j
 public class IndividualDao {
+  private static final int LIST_INDIVIDUAL_LIMIT = 25;
   private String SELECT_INDIVIDUAL_QUERY = "select * from individual where id = :id";
   // no paging at this time.
-  private String LIST_INDIVIDUALS_QUERY = "select * from individual";
+  private String LIST_INDIVIDUALS_QUERY =
+      "select * from individual limit %s".formatted(LIST_INDIVIDUAL_LIMIT);
 
   private static final RowMapper<Individual> individualRowMapper =
-      (rs, num) -> new Individual(rs.getString("id"), rs.getString("sex"));
+      (rs, num) ->
+          new Individual(
+              rs.getString("id"),
+              rs.getString("sex"),
+              rs.getInt("dataset_id"),
+              rs.getString("ethnicity"),
+              rs.getString("url"));
 
   private final NamedParameterJdbcTemplate jdbcTemplate;
 

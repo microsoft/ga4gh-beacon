@@ -1,4 +1,4 @@
-package com.microsoft.beacon.generated.model;
+package com.microsoft.beacon.api.generated.model.dataset;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;

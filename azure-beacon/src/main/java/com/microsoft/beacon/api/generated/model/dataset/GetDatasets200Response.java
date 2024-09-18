@@ -1,4 +1,4 @@
-package com.microsoft.beacon.generated.model;
+package com.microsoft.beacon.api.generated.model.dataset;
 
 import jakarta.annotation.Generated;
 import jakarta.validation.constraints.*;
