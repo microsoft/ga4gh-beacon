@@ -1,4 +1,4 @@
-package com.microsoft.beacon.generated.model;
+package com.microsoft.beacon.generated.model.individual;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -6,45 +6,55 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-/**
- * The schema below is a placeholder for a dictionary &#39;key&#39;:&#39;object&#39;. The individual
- * definitions depend on the model (e.g. beacon-v2-default-model) and entity (e.g.
- * &#x60;genomicVariant&#x60;).
- */
+/** Sets of results to be returned as query response. */
 @Schema(
-    name = "requestParameters",
-    description =
-        "The schema below is a placeholder for a dictionary 'key':'object'. The individual definitions depend on the model (e.g. beacon-v2-default-model) and entity (e.g. `genomicVariant`).")
-@JsonTypeName("requestParameters")
+    name = "beaconResultsets",
+    description = "Sets of results to be returned as query response.")
+@JsonTypeName("beaconResultsets")
 @Generated(
     value = "org.openapitools.codegen.languages.SpringCodegen",
     date = "2024-09-18T10:46:59.161413591-07:00[America/Los_Angeles]",
     comments = "Generator version: 7.8.0")
 @SuppressWarnings("PMD")
-public class RequestParameters {
+public class BeaconResultsets {
 
   private String $schema;
 
-  public RequestParameters $schema(String $schema) {
+  @Valid private List<ResultsetInstance> resultSets = new ArrayList<>();
+
+  public BeaconResultsets() {
+    super();
+  }
+
+  /** Constructor with only required parameters */
+  public BeaconResultsets(List<ResultsetInstance> resultSets) {
+    this.resultSets = resultSets;
+  }
+
+  public BeaconResultsets $schema(String $schema) {
     this.$schema = $schema;
     return this;
   }
 
   /**
-   * Added here to allow proper validation of the documents w/o providing specific values.
+   * Refers to the JSON Schema which describes the set of valid attributes for this particular
+   * document type. This attribute is mostly used in schemas that should be tested in Beacon
+   * implementations.
    *
    * @return $schema
    */
   @Schema(
       name = "$schema",
       description =
-          "Added here to allow proper validation of the documents w/o providing specific values.",
+          "Refers to the JSON Schema which describes the set of valid attributes for this particular document type. This attribute is mostly used in schemas that should be tested in Beacon implementations.",
       requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("$schema")
   public String get$Schema() {
@@ -53,6 +63,37 @@ public class RequestParameters {
 
   public void set$Schema(String $schema) {
     this.$schema = $schema;
+  }
+
+  public BeaconResultsets resultSets(List<ResultsetInstance> resultSets) {
+    this.resultSets = resultSets;
+    return this;
+  }
+
+  public BeaconResultsets addResultSetsItem(ResultsetInstance resultSetsItem) {
+    if (this.resultSets == null) {
+      this.resultSets = new ArrayList<>();
+    }
+    this.resultSets.add(resultSetsItem);
+    return this;
+  }
+
+  /**
+   * Get resultSets
+   *
+   * @return resultSets
+   */
+  @NotNull
+  @Valid
+  @Size(min = 0)
+  @Schema(name = "resultSets", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("resultSets")
+  public List<ResultsetInstance> getResultSets() {
+    return resultSets;
+  }
+
+  public void setResultSets(List<ResultsetInstance> resultSets) {
+    this.resultSets = resultSets;
   }
 
   /**
@@ -66,7 +107,7 @@ public class RequestParameters {
    * does not already exist, create it otherwise replace it.
    */
   @JsonAnySetter
-  public RequestParameters putAdditionalProperty(String key, Object value) {
+  public BeaconResultsets putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
       this.additionalProperties = new HashMap<String, Object>();
     }
@@ -96,21 +137,23 @@ public class RequestParameters {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RequestParameters requestParameters = (RequestParameters) o;
-    return Objects.equals(this.$schema, requestParameters.$schema)
-        && Objects.equals(this.additionalProperties, requestParameters.additionalProperties);
+    BeaconResultsets beaconResultsets = (BeaconResultsets) o;
+    return Objects.equals(this.$schema, beaconResultsets.$schema)
+        && Objects.equals(this.resultSets, beaconResultsets.resultSets)
+        && Objects.equals(this.additionalProperties, beaconResultsets.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash($schema, additionalProperties);
+    return Objects.hash($schema, resultSets, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RequestParameters {\n");
+    sb.append("class BeaconResultsets {\n");
     sb.append("    $schema: ").append(toIndentedString($schema)).append("\n");
+    sb.append("    resultSets: ").append(toIndentedString(resultSets)).append("\n");
 
     sb.append("    additionalProperties: ")
         .append(toIndentedString(additionalProperties))

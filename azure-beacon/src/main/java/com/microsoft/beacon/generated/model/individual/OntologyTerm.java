@@ -1,4 +1,4 @@
-package com.microsoft.beacon.generated.model;
+package com.microsoft.beacon.generated.model.individual;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -6,87 +6,85 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-/**
- * The filtering terms response provides information about available individual filters for a
- * beacon&#39;s entry types as well as optional information about the ontologies the filters belong
- * to.
- */
-@Schema(
-    name = "beaconFilteringTermsResponse",
-    description =
-        "The filtering terms response provides information about available individual filters for a beacon's entry types as well as optional information about the ontologies the filters belong to.")
-@JsonTypeName("beaconFilteringTermsResponse")
+/** Definition of an ontology term. */
+@Schema(name = "ontologyTerm", description = "Definition of an ontology term.")
+@JsonTypeName("ontologyTerm")
 @Generated(
     value = "org.openapitools.codegen.languages.SpringCodegen",
     date = "2024-09-18T10:46:59.161413591-07:00[America/Los_Angeles]",
     comments = "Generator version: 7.8.0")
 @SuppressWarnings("PMD")
-public class BeaconFilteringTermsResponse {
+public class OntologyTerm {
 
-  private BeaconInformationalResponseMeta meta;
+  private String id;
 
-  private BeaconFilteringTermsResults response;
+  private String label;
 
-  public BeaconFilteringTermsResponse() {
+  public OntologyTerm() {
     super();
   }
 
   /** Constructor with only required parameters */
-  public BeaconFilteringTermsResponse(
-      BeaconInformationalResponseMeta meta, BeaconFilteringTermsResults response) {
-    this.meta = meta;
-    this.response = response;
+  public OntologyTerm(String id) {
+    this.id = id;
   }
 
-  public BeaconFilteringTermsResponse meta(BeaconInformationalResponseMeta meta) {
-    this.meta = meta;
+  public OntologyTerm id(String id) {
+    this.id = id;
     return this;
   }
 
   /**
-   * Get meta
+   * Definition of an identifier in the CURIE `prefix:local-part` format which is the default type
+   * of e.g. ontology term `id` values (used e.g. for filters or external identifiers).
    *
-   * @return meta
+   * @return id
    */
   @NotNull
-  @Valid
-  @Schema(name = "meta", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("meta")
-  public BeaconInformationalResponseMeta getMeta() {
-    return meta;
+  @Pattern(regexp = "^\\w[^:]+:.+$")
+  @Schema(
+      name = "id",
+      description =
+          "Definition of an identifier in the CURIE `prefix:local-part` format which is the default type of e.g. ontology term `id` values (used e.g. for filters or external identifiers).",
+      requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("id")
+  public String getId() {
+    return id;
   }
 
-  public void setMeta(BeaconInformationalResponseMeta meta) {
-    this.meta = meta;
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public BeaconFilteringTermsResponse response(BeaconFilteringTermsResults response) {
-    this.response = response;
+  public OntologyTerm label(String label) {
+    this.label = label;
     return this;
   }
 
   /**
-   * Get response
+   * The text that describes the term. By default it could be the preferred text of the term, but is
+   * it acceptable to customize it for a clearer description and understanding of the term in an
+   * specific context.
    *
-   * @return response
+   * @return label
    */
-  @NotNull
-  @Valid
-  @Schema(name = "response", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("response")
-  public BeaconFilteringTermsResults getResponse() {
-    return response;
+  @Schema(
+      name = "label",
+      description =
+          "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context.",
+      requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("label")
+  public String getLabel() {
+    return label;
   }
 
-  public void setResponse(BeaconFilteringTermsResults response) {
-    this.response = response;
+  public void setLabel(String label) {
+    this.label = label;
   }
 
   /**
@@ -100,7 +98,7 @@ public class BeaconFilteringTermsResponse {
    * does not already exist, create it otherwise replace it.
    */
   @JsonAnySetter
-  public BeaconFilteringTermsResponse putAdditionalProperty(String key, Object value) {
+  public OntologyTerm putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
       this.additionalProperties = new HashMap<String, Object>();
     }
@@ -130,24 +128,23 @@ public class BeaconFilteringTermsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BeaconFilteringTermsResponse beaconFilteringTermsResponse = (BeaconFilteringTermsResponse) o;
-    return Objects.equals(this.meta, beaconFilteringTermsResponse.meta)
-        && Objects.equals(this.response, beaconFilteringTermsResponse.response)
-        && Objects.equals(
-            this.additionalProperties, beaconFilteringTermsResponse.additionalProperties);
+    OntologyTerm ontologyTerm = (OntologyTerm) o;
+    return Objects.equals(this.id, ontologyTerm.id)
+        && Objects.equals(this.label, ontologyTerm.label)
+        && Objects.equals(this.additionalProperties, ontologyTerm.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(meta, response, additionalProperties);
+    return Objects.hash(id, label, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BeaconFilteringTermsResponse {\n");
-    sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
-    sb.append("    response: ").append(toIndentedString(response)).append("\n");
+    sb.append("class OntologyTerm {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    label: ").append(toIndentedString(label)).append("\n");
 
     sb.append("    additionalProperties: ")
         .append(toIndentedString(additionalProperties))

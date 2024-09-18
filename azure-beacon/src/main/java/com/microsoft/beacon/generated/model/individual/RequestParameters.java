@@ -1,4 +1,4 @@
-package com.microsoft.beacon.generated.model;
+package com.microsoft.beacon.generated.model.individual;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -6,86 +6,51 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-/** Definition of an ontology term. */
-@Schema(name = "ontologyTerm", description = "Definition of an ontology term.")
-@JsonTypeName("ontologyTerm")
+/**
+ * The schema below is a placeholder for a dictionary &#39;key&#39;:&#39;object&#39;. The individual
+ * definitions depend on the model (e.g. beacon-v2-default-model) and entity (e.g.
+ * &#x60;genomicVariant&#x60;).
+ */
+@Schema(
+    name = "requestParameters",
+    description =
+        "The schema below is a placeholder for a dictionary 'key':'object'. The individual definitions depend on the model (e.g. beacon-v2-default-model) and entity (e.g. `genomicVariant`).")
+@JsonTypeName("requestParameters")
 @Generated(
     value = "org.openapitools.codegen.languages.SpringCodegen",
     date = "2024-09-18T10:46:59.161413591-07:00[America/Los_Angeles]",
     comments = "Generator version: 7.8.0")
 @SuppressWarnings("PMD")
-public class OntologyTerm {
+public class RequestParameters {
 
-  private String id;
+  private String $schema;
 
-  private String label;
-
-  public OntologyTerm() {
-    super();
-  }
-
-  /** Constructor with only required parameters */
-  public OntologyTerm(String id) {
-    this.id = id;
-  }
-
-  public OntologyTerm id(String id) {
-    this.id = id;
+  public RequestParameters $schema(String $schema) {
+    this.$schema = $schema;
     return this;
   }
 
   /**
-   * Definition of an identifier in the CURIE `prefix:local-part` format which is the default type
-   * of e.g. ontology term `id` values (used e.g. for filters or external identifiers).
+   * Added here to allow proper validation of the documents w/o providing specific values.
    *
-   * @return id
-   */
-  @NotNull
-  @Pattern(regexp = "^\\w[^:]+:.+$")
-  @Schema(
-      name = "id",
-      description =
-          "Definition of an identifier in the CURIE `prefix:local-part` format which is the default type of e.g. ontology term `id` values (used e.g. for filters or external identifiers).",
-      requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public OntologyTerm label(String label) {
-    this.label = label;
-    return this;
-  }
-
-  /**
-   * The text that describes the term. By default it could be the preferred text of the term, but is
-   * it acceptable to customize it for a clearer description and understanding of the term in an
-   * specific context.
-   *
-   * @return label
+   * @return $schema
    */
   @Schema(
-      name = "label",
+      name = "$schema",
       description =
-          "The text that describes the term. By default it could be the preferred text of the term, but is it acceptable to customize it for a clearer description and understanding of the term in an specific context.",
+          "Added here to allow proper validation of the documents w/o providing specific values.",
       requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("label")
-  public String getLabel() {
-    return label;
+  @JsonProperty("$schema")
+  public String get$Schema() {
+    return $schema;
   }
 
-  public void setLabel(String label) {
-    this.label = label;
+  public void set$Schema(String $schema) {
+    this.$schema = $schema;
   }
 
   /**
@@ -99,7 +64,7 @@ public class OntologyTerm {
    * does not already exist, create it otherwise replace it.
    */
   @JsonAnySetter
-  public OntologyTerm putAdditionalProperty(String key, Object value) {
+  public RequestParameters putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
       this.additionalProperties = new HashMap<String, Object>();
     }
@@ -129,23 +94,21 @@ public class OntologyTerm {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    OntologyTerm ontologyTerm = (OntologyTerm) o;
-    return Objects.equals(this.id, ontologyTerm.id)
-        && Objects.equals(this.label, ontologyTerm.label)
-        && Objects.equals(this.additionalProperties, ontologyTerm.additionalProperties);
+    RequestParameters requestParameters = (RequestParameters) o;
+    return Objects.equals(this.$schema, requestParameters.$schema)
+        && Objects.equals(this.additionalProperties, requestParameters.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, label, additionalProperties);
+    return Objects.hash($schema, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OntologyTerm {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    label: ").append(toIndentedString(label)).append("\n");
+    sb.append("class RequestParameters {\n");
+    sb.append("    $schema: ").append(toIndentedString($schema)).append("\n");
 
     sb.append("    additionalProperties: ")
         .append(toIndentedString(additionalProperties))

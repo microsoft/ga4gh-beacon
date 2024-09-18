@@ -4,10 +4,10 @@
  */
 package com.microsoft.beacon.generated.api;
 
-import com.microsoft.beacon.generated.model.BeaconFilteringTermsResponse;
-import com.microsoft.beacon.generated.model.BeaconRequestBody;
-import com.microsoft.beacon.generated.model.GetIndividuals200Response;
-import com.microsoft.beacon.generated.model.IncludeResultsetResponses;
+import com.microsoft.beacon.generated.model.individual.BeaconFilteringTermsResponse;
+import com.microsoft.beacon.generated.model.individual.BeaconRequestBody;
+import com.microsoft.beacon.generated.model.individual.GetIndividuals200Response;
+import com.microsoft.beacon.generated.model.individual.IncludeResultsetResponses;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;

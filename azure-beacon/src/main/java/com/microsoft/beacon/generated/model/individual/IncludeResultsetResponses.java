@@ -1,10 +1,8 @@
-package com.microsoft.beacon.generated.model;
+package com.microsoft.beacon.generated.model.individual;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 
 /**
  * Indicator of whether responses from every Resultset should be included in the response to this

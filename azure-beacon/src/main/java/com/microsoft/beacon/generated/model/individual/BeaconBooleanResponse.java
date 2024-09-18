@@ -1,4 +1,4 @@
-package com.microsoft.beacon.generated.model;
+package com.microsoft.beacon.generated.model.individual;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -6,26 +6,25 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /**
- * Complete definition for a response that does not include record level details but provides
- * &#x60;Boolean&#x60; and &#x60;count&#x60; information.
+ * Complete definition for a minimal response that provides *only* a &#x60;Boolean&#x60; exists
+ * true|false answer.
  */
 @Schema(
-    name = "beaconCountResponse",
+    name = "beaconBooleanResponse",
     description =
-        "Complete definition for a response that does not include record level details but provides `Boolean` and `count` information.")
-@JsonTypeName("beaconCountResponse")
+        "Complete definition for a minimal response that provides *only* a `Boolean` exists true|false answer.")
+@JsonTypeName("beaconBooleanResponse")
 @Generated(
     value = "org.openapitools.codegen.languages.SpringCodegen",
     date = "2024-09-18T10:46:59.161413591-07:00[America/Los_Angeles]",
     comments = "Generator version: 7.8.0")
 @SuppressWarnings("PMD")
-public class BeaconCountResponse implements GetIndividuals200Response {
+public class BeaconBooleanResponse implements GetIndividuals200Response {
 
   @Valid private List<@Valid Handover> beaconHandovers = new ArrayList<>();
 
@@ -33,24 +32,25 @@ public class BeaconCountResponse implements GetIndividuals200Response {
 
   private BeaconResponseMeta meta;
 
-  private BeaconCountResponseSection responseSummary;
+  private BeaconBooleanResponseSection responseSummary;
 
-  public BeaconCountResponse() {
+  public BeaconBooleanResponse() {
     super();
   }
 
   /** Constructor with only required parameters */
-  public BeaconCountResponse(BeaconResponseMeta meta, BeaconCountResponseSection responseSummary) {
+  public BeaconBooleanResponse(
+      BeaconResponseMeta meta, BeaconBooleanResponseSection responseSummary) {
     this.meta = meta;
     this.responseSummary = responseSummary;
   }
 
-  public BeaconCountResponse beaconHandovers(List<@Valid Handover> beaconHandovers) {
+  public BeaconBooleanResponse beaconHandovers(List<@Valid Handover> beaconHandovers) {
     this.beaconHandovers = beaconHandovers;
     return this;
   }
 
-  public BeaconCountResponse addBeaconHandoversItem(Handover beaconHandoversItem) {
+  public BeaconBooleanResponse addBeaconHandoversItem(Handover beaconHandoversItem) {
     if (this.beaconHandovers == null) {
       this.beaconHandovers = new ArrayList<>();
     }
@@ -77,7 +77,7 @@ public class BeaconCountResponse implements GetIndividuals200Response {
     this.beaconHandovers = beaconHandovers;
   }
 
-  public BeaconCountResponse info(Object info) {
+  public BeaconBooleanResponse info(Object info) {
     this.info = info;
     return this;
   }
@@ -105,7 +105,7 @@ public class BeaconCountResponse implements GetIndividuals200Response {
     this.info = info;
   }
 
-  public BeaconCountResponse meta(BeaconResponseMeta meta) {
+  public BeaconBooleanResponse meta(BeaconResponseMeta meta) {
     this.meta = meta;
     return this;
   }
@@ -127,7 +127,7 @@ public class BeaconCountResponse implements GetIndividuals200Response {
     this.meta = meta;
   }
 
-  public BeaconCountResponse responseSummary(BeaconCountResponseSection responseSummary) {
+  public BeaconBooleanResponse responseSummary(BeaconBooleanResponseSection responseSummary) {
     this.responseSummary = responseSummary;
     return this;
   }
@@ -141,11 +141,11 @@ public class BeaconCountResponse implements GetIndividuals200Response {
   @Valid
   @Schema(name = "responseSummary", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("responseSummary")
-  public BeaconCountResponseSection getResponseSummary() {
+  public BeaconBooleanResponseSection getResponseSummary() {
     return responseSummary;
   }
 
-  public void setResponseSummary(BeaconCountResponseSection responseSummary) {
+  public void setResponseSummary(BeaconBooleanResponseSection responseSummary) {
     this.responseSummary = responseSummary;
   }
 
@@ -157,11 +157,11 @@ public class BeaconCountResponse implements GetIndividuals200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BeaconCountResponse beaconCountResponse = (BeaconCountResponse) o;
-    return Objects.equals(this.beaconHandovers, beaconCountResponse.beaconHandovers)
-        && Objects.equals(this.info, beaconCountResponse.info)
-        && Objects.equals(this.meta, beaconCountResponse.meta)
-        && Objects.equals(this.responseSummary, beaconCountResponse.responseSummary);
+    BeaconBooleanResponse beaconBooleanResponse = (BeaconBooleanResponse) o;
+    return Objects.equals(this.beaconHandovers, beaconBooleanResponse.beaconHandovers)
+        && Objects.equals(this.info, beaconBooleanResponse.info)
+        && Objects.equals(this.meta, beaconBooleanResponse.meta)
+        && Objects.equals(this.responseSummary, beaconBooleanResponse.responseSummary);
   }
 
   @Override
@@ -172,7 +172,7 @@ public class BeaconCountResponse implements GetIndividuals200Response {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BeaconCountResponse {\n");
+    sb.append("class BeaconBooleanResponse {\n");
     sb.append("    beaconHandovers: ").append(toIndentedString(beaconHandovers)).append("\n");
     sb.append("    info: ").append(toIndentedString(info)).append("\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");

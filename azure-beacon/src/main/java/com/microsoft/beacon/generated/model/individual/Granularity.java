@@ -1,10 +1,8 @@
-package com.microsoft.beacon.generated.model;
+package com.microsoft.beacon.generated.model.individual;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.annotation.Generated;
-import jakarta.validation.constraints.*;
-import java.util.*;
 
 /**
  * Level of detail of the response: * `boolean`: returns true/false' responses * `count`: adds the

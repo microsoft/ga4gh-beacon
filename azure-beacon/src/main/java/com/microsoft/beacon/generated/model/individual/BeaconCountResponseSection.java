@@ -1,37 +1,39 @@
-package com.microsoft.beacon.generated.model;
+package com.microsoft.beacon.generated.model.individual;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.Objects;
 
-/** Beacon results summary section. */
-@Schema(name = "beaconSummaryResponseSection", description = "Beacon results summary section.")
-@JsonTypeName("beaconSummaryResponseSection")
+/** Payload definition for the \&quot;count\&quot; response. */
+@Schema(
+    name = "beaconCountResponseSection",
+    description = "Payload definition for the \"count\" response.")
+@JsonTypeName("beaconCountResponseSection")
 @Generated(
     value = "org.openapitools.codegen.languages.SpringCodegen",
     date = "2024-09-18T10:46:59.161413591-07:00[America/Los_Angeles]",
     comments = "Generator version: 7.8.0")
 @SuppressWarnings("PMD")
-public class BeaconSummaryResponseSection {
+public class BeaconCountResponseSection {
 
   private Boolean exists;
 
   private Integer numTotalResults;
 
-  public BeaconSummaryResponseSection() {
+  public BeaconCountResponseSection() {
     super();
   }
 
   /** Constructor with only required parameters */
-  public BeaconSummaryResponseSection(Boolean exists) {
+  public BeaconCountResponseSection(Boolean exists, Integer numTotalResults) {
     this.exists = exists;
+    this.numTotalResults = numTotalResults;
   }
 
-  public BeaconSummaryResponseSection exists(Boolean exists) {
+  public BeaconCountResponseSection exists(Boolean exists) {
     this.exists = exists;
     return this;
   }
@@ -57,7 +59,7 @@ public class BeaconSummaryResponseSection {
     this.exists = exists;
   }
 
-  public BeaconSummaryResponseSection numTotalResults(Integer numTotalResults) {
+  public BeaconCountResponseSection numTotalResults(Integer numTotalResults) {
     this.numTotalResults = numTotalResults;
     return this;
   }
@@ -68,12 +70,13 @@ public class BeaconSummaryResponseSection {
    *
    * @return numTotalResults
    */
+  @NotNull
   @Min(0)
   @Schema(
       name = "numTotalResults",
       description =
           "Total number of results. NOT the number of results returned in this batch (after pagination) but the total obtained by the query.",
-      requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+      requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("numTotalResults")
   public Integer getNumTotalResults() {
     return numTotalResults;
@@ -91,9 +94,9 @@ public class BeaconSummaryResponseSection {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BeaconSummaryResponseSection beaconSummaryResponseSection = (BeaconSummaryResponseSection) o;
-    return Objects.equals(this.exists, beaconSummaryResponseSection.exists)
-        && Objects.equals(this.numTotalResults, beaconSummaryResponseSection.numTotalResults);
+    BeaconCountResponseSection beaconCountResponseSection = (BeaconCountResponseSection) o;
+    return Objects.equals(this.exists, beaconCountResponseSection.exists)
+        && Objects.equals(this.numTotalResults, beaconCountResponseSection.numTotalResults);
   }
 
   @Override
@@ -104,7 +107,7 @@ public class BeaconSummaryResponseSection {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BeaconSummaryResponseSection {\n");
+    sb.append("class BeaconCountResponseSection {\n");
     sb.append("    exists: ").append(toIndentedString(exists)).append("\n");
     sb.append("    numTotalResults: ").append(toIndentedString(numTotalResults)).append("\n");
     sb.append("}");

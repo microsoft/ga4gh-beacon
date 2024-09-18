@@ -1,31 +1,30 @@
-package com.microsoft.beacon.generated.model;
+package com.microsoft.beacon.generated.model.individual;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.annotation.Generated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
-import java.util.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
-/** Beacon response that includes record level details, grouped in Resultsets. */
+/**
+ * Complete definition for a response that does not include record level details but provides
+ * &#x60;Boolean&#x60; and &#x60;count&#x60; information.
+ */
 @Schema(
-    name = "beaconResultsetsResponse",
-    description = "Beacon response that includes record level details, grouped in Resultsets.")
-@JsonTypeName("beaconResultsetsResponse")
+    name = "beaconCountResponse",
+    description =
+        "Complete definition for a response that does not include record level details but provides `Boolean` and `count` information.")
+@JsonTypeName("beaconCountResponse")
 @Generated(
     value = "org.openapitools.codegen.languages.SpringCodegen",
     date = "2024-09-18T10:46:59.161413591-07:00[America/Los_Angeles]",
     comments = "Generator version: 7.8.0")
 @SuppressWarnings("PMD")
-public class BeaconResultsetsResponse implements GetIndividuals200Response {
+public class BeaconCountResponse implements GetIndividuals200Response {
 
   @Valid private List<@Valid Handover> beaconHandovers = new ArrayList<>();
 
@@ -33,30 +32,24 @@ public class BeaconResultsetsResponse implements GetIndividuals200Response {
 
   private BeaconResponseMeta meta;
 
-  private BeaconResultsets response;
+  private BeaconCountResponseSection responseSummary;
 
-  private BeaconSummaryResponseSection responseSummary;
-
-  public BeaconResultsetsResponse() {
+  public BeaconCountResponse() {
     super();
   }
 
   /** Constructor with only required parameters */
-  public BeaconResultsetsResponse(
-      BeaconResponseMeta meta,
-      BeaconResultsets response,
-      BeaconSummaryResponseSection responseSummary) {
+  public BeaconCountResponse(BeaconResponseMeta meta, BeaconCountResponseSection responseSummary) {
     this.meta = meta;
-    this.response = response;
     this.responseSummary = responseSummary;
   }
 
-  public BeaconResultsetsResponse beaconHandovers(List<@Valid Handover> beaconHandovers) {
+  public BeaconCountResponse beaconHandovers(List<@Valid Handover> beaconHandovers) {
     this.beaconHandovers = beaconHandovers;
     return this;
   }
 
-  public BeaconResultsetsResponse addBeaconHandoversItem(Handover beaconHandoversItem) {
+  public BeaconCountResponse addBeaconHandoversItem(Handover beaconHandoversItem) {
     if (this.beaconHandovers == null) {
       this.beaconHandovers = new ArrayList<>();
     }
@@ -83,7 +76,7 @@ public class BeaconResultsetsResponse implements GetIndividuals200Response {
     this.beaconHandovers = beaconHandovers;
   }
 
-  public BeaconResultsetsResponse info(Object info) {
+  public BeaconCountResponse info(Object info) {
     this.info = info;
     return this;
   }
@@ -111,7 +104,7 @@ public class BeaconResultsetsResponse implements GetIndividuals200Response {
     this.info = info;
   }
 
-  public BeaconResultsetsResponse meta(BeaconResponseMeta meta) {
+  public BeaconCountResponse meta(BeaconResponseMeta meta) {
     this.meta = meta;
     return this;
   }
@@ -133,29 +126,7 @@ public class BeaconResultsetsResponse implements GetIndividuals200Response {
     this.meta = meta;
   }
 
-  public BeaconResultsetsResponse response(BeaconResultsets response) {
-    this.response = response;
-    return this;
-  }
-
-  /**
-   * Get response
-   *
-   * @return response
-   */
-  @NotNull
-  @Valid
-  @Schema(name = "response", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("response")
-  public BeaconResultsets getResponse() {
-    return response;
-  }
-
-  public void setResponse(BeaconResultsets response) {
-    this.response = response;
-  }
-
-  public BeaconResultsetsResponse responseSummary(BeaconSummaryResponseSection responseSummary) {
+  public BeaconCountResponse responseSummary(BeaconCountResponseSection responseSummary) {
     this.responseSummary = responseSummary;
     return this;
   }
@@ -169,45 +140,12 @@ public class BeaconResultsetsResponse implements GetIndividuals200Response {
   @Valid
   @Schema(name = "responseSummary", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("responseSummary")
-  public BeaconSummaryResponseSection getResponseSummary() {
+  public BeaconCountResponseSection getResponseSummary() {
     return responseSummary;
   }
 
-  public void setResponseSummary(BeaconSummaryResponseSection responseSummary) {
+  public void setResponseSummary(BeaconCountResponseSection responseSummary) {
     this.responseSummary = responseSummary;
-  }
-
-  /**
-   * A container for additional, undeclared properties. This is a holder for any undeclared
-   * properties as specified with the 'additionalProperties' keyword in the OAS document.
-   */
-  private Map<String, Object> additionalProperties;
-
-  /**
-   * Set the additional (undeclared) property with the specified name and value. If the property
-   * does not already exist, create it otherwise replace it.
-   */
-  @JsonAnySetter
-  public BeaconResultsetsResponse putAdditionalProperty(String key, Object value) {
-    if (this.additionalProperties == null) {
-      this.additionalProperties = new HashMap<String, Object>();
-    }
-    this.additionalProperties.put(key, value);
-    return this;
-  }
-
-  /** Return the additional (undeclared) property. */
-  @JsonAnyGetter
-  public Map<String, Object> getAdditionalProperties() {
-    return additionalProperties;
-  }
-
-  /** Return the additional (undeclared) property with the specified name. */
-  public Object getAdditionalProperty(String key) {
-    if (this.additionalProperties == null) {
-      return null;
-    }
-    return this.additionalProperties.get(key);
   }
 
   @Override
@@ -218,34 +156,26 @@ public class BeaconResultsetsResponse implements GetIndividuals200Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BeaconResultsetsResponse beaconResultsetsResponse = (BeaconResultsetsResponse) o;
-    return Objects.equals(this.beaconHandovers, beaconResultsetsResponse.beaconHandovers)
-        && Objects.equals(this.info, beaconResultsetsResponse.info)
-        && Objects.equals(this.meta, beaconResultsetsResponse.meta)
-        && Objects.equals(this.response, beaconResultsetsResponse.response)
-        && Objects.equals(this.responseSummary, beaconResultsetsResponse.responseSummary)
-        && Objects.equals(this.additionalProperties, beaconResultsetsResponse.additionalProperties);
+    BeaconCountResponse beaconCountResponse = (BeaconCountResponse) o;
+    return Objects.equals(this.beaconHandovers, beaconCountResponse.beaconHandovers)
+        && Objects.equals(this.info, beaconCountResponse.info)
+        && Objects.equals(this.meta, beaconCountResponse.meta)
+        && Objects.equals(this.responseSummary, beaconCountResponse.responseSummary);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(
-        beaconHandovers, info, meta, response, responseSummary, additionalProperties);
+    return Objects.hash(beaconHandovers, info, meta, responseSummary);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BeaconResultsetsResponse {\n");
+    sb.append("class BeaconCountResponse {\n");
     sb.append("    beaconHandovers: ").append(toIndentedString(beaconHandovers)).append("\n");
     sb.append("    info: ").append(toIndentedString(info)).append("\n");
     sb.append("    meta: ").append(toIndentedString(meta)).append("\n");
-    sb.append("    response: ").append(toIndentedString(response)).append("\n");
     sb.append("    responseSummary: ").append(toIndentedString(responseSummary)).append("\n");
-
-    sb.append("    additionalProperties: ")
-        .append(toIndentedString(additionalProperties))
-        .append("\n");
     sb.append("}");
     return sb.toString();
   }
