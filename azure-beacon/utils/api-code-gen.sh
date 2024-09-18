@@ -42,7 +42,7 @@ openapi-generator-cli generate \
           -i $DATASETS_PATH_TO_YAML \
           -g spring \
           -o $SERVER_GENERATED_CODE_DIR \
-          --additional-properties=modelPackage=com.microsoft.beacon.generated.model,apiPackage=com.microsoft.beacon.generated.api \
+          --additional-properties=modelPackage=com.microsoft.beacon.generated.model,apiPackage=com.microsoft.beacon.generated.api,useSpringBoot3=true \
           --skip-validate-spec
 
 #prepare to copy generated code into 'build' folder

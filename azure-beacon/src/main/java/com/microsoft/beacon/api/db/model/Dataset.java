@@ -5,15 +5,17 @@ import java.time.LocalDateTime;
 public class Dataset {
   public String Id;
   public String Name;
+  public String ExternalUrl;
   public String Description;
   public String Version;
   public String Info;
   public LocalDateTime CreateDateTime;
   public LocalDateTime UpdateDateTime;
 
-  public Dataset(String id, String name) {
+  public Dataset(String id, String name, String externalUrl) {
     this.Id = id;
     this.Name = name;
+    this.ExternalUrl = externalUrl;
     this.CreateDateTime = LocalDateTime.now();
     this.UpdateDateTime = LocalDateTime.now();
   }
@@ -32,6 +34,14 @@ public class Dataset {
 
   public void setName(String name) {
     this.Name = name;
+  }
+
+  public String getExternalUrl() {
+    return this.ExternalUrl;
+  }
+
+  public void setExternalUrl(String externalUrl) {
+    this.ExternalUrl = externalUrl;
   }
 
   public String getDescription() {

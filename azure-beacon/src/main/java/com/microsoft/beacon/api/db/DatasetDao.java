@@ -19,7 +19,8 @@ public class DatasetDao {
   private String LIST_DATASET_QUERY = "select * from dataset";
 
   private static final RowMapper<Dataset> datasetRowMapper =
-      (rs, num) -> new Dataset(rs.getString("id"), rs.getString("name"));
+      (rs, num) ->
+          new Dataset(rs.getString("id"), rs.getString("name"), rs.getString("externalUrl"));
 
   private final NamedParameterJdbcTemplate jdbcTemplate;
 
