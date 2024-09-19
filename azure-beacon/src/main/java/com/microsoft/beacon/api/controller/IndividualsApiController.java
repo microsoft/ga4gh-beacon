@@ -70,7 +70,8 @@ public class IndividualsApiController implements IndividualsApi {
       Integer limit,
       IncludeResultsetResponses includeResultsetResponses,
       List<String> filters) {
-    List<Individual> individuals = individualService.getIndividuals();
+    List<Individual> individuals =
+        individualService.getIndividuals(Optional.ofNullable(skip), Optional.ofNullable(limit));
     return individuals.size() > 0
         ? new ResponseEntity<>(new IndividualsResponse(individuals), HttpStatus.OK)
         : new ResponseEntity<>(HttpStatus.NOT_FOUND);
