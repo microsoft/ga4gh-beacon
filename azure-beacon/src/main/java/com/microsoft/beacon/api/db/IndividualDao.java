@@ -14,11 +14,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Slf4j
 public class IndividualDao {
-  private static final int LIST_INDIVIDUAL_LIMIT = 25;
+  // define default in case paging parameters are available
+  private static final int LIST_INDIVIDUALS_LIMIT = 25;
+  private static final int LIST_INDIVIDUALS_SKIP = 0;
+
   private String SELECT_INDIVIDUAL_QUERY = "select * from individual where id = :id";
   // no paging at this time.
   private String LIST_INDIVIDUALS_QUERY =
-      "select * from individual limit %s".formatted(LIST_INDIVIDUAL_LIMIT);
+      "select * from individual order by id limit :limit offset :offset";
 
   private static final RowMapper<Individual> individualRowMapper =
       (rs, num) ->
@@ -47,10 +50,18 @@ public class IndividualDao {
     }
   }
 
-  public List<Individual> listIndividuals() {
+  public List<Individual> listIndividuals(Optional<Integer> skip, Optional<Integer> limit) {
     List<Individual> result = Collections.emptyList();
     try {
-      result = jdbcTemplate.query(LIST_INDIVIDUALS_QUERY, individualRowMapper);
+      result =
+          jdbcTemplate.query(
+              LIST_INDIVIDUALS_QUERY,
+              Map.of(
+                  "limit",
+                  limit.orElse(LIST_INDIVIDUALS_LIMIT),
+                  "offset",
+                  skip.orElse(LIST_INDIVIDUALS_SKIP)),
+              individualRowMapper);
     } catch (DataAccessException e) {
       log.error("Error getting list of individual data. Error: {}", e.getMessage());
     }

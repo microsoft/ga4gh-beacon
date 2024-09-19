@@ -18,7 +18,7 @@ public class IndividualService {
     return individualDao.getIndividual(id);
   }
 
-  public List<Individual> getIndividuals(/*hardcoded limit now is on DAO level*/ ) {
-    return individualDao.listIndividuals();
+  public List<Individual> getIndividuals(Optional<Integer> skip, Optional<Integer> limit) {
+    return individualDao.listIndividuals(skip, limit);
   }
 }
