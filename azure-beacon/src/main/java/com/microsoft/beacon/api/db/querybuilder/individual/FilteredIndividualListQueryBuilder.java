@@ -11,7 +11,8 @@ public class FilteredIndividualListQueryBuilder implements QueryBuilder {
   private static final String WHERE_CLAUSE = "where %s";
   private static final String SEX_WHERE_CLAUSE_FILTER = "i.sex = :sex";
   private static final String ETHNICITY_WHERE_CLAUSE_FILTER = "i.ethnicity like :ethnicity";
-  private static final String DISEASE_WHERE_CLAUSE_FILTER = "label like :disease";
+  private static final String DISEASE_WHERE_CLAUSE_FILTER =
+      "(d.label like :disease) or (d.id like :disease)";
 
   private static final String QUERY =
       """
