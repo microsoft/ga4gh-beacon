@@ -2,6 +2,7 @@ package com.microsoft.beacon.api.controller;
 
 import com.microsoft.beacon.api.controller.utils.ResponseBuilder;
 import com.microsoft.beacon.api.db.model.Individual;
+import com.microsoft.beacon.api.db.model.IndividualExtended;
 import com.microsoft.beacon.api.generated.api.IndividualsApi;
 import com.microsoft.beacon.api.generated.model.individual.GetIndividuals200Response;
 import com.microsoft.beacon.api.generated.model.individual.IncludeResultsetResponses;
@@ -66,13 +67,12 @@ public class IndividualsApiController implements IndividualsApi {
 
   @Override
   public ResponseEntity<GetIndividuals200Response> getIndividuals(
-      String requestedSchema,
+      String requestedSchema, /*ignored*/
       Integer skip,
       Integer limit,
       IncludeResultsetResponses includeResultsetResponses,
       List<String> filters) {
-    List<Individual> individuals =
-        individualService.getIndividuals(Optional.ofNullable(skip), Optional.ofNullable(limit));
+    List<IndividualExtended> individuals = individualService.getIndividuals(skip, limit, filters);
     return individuals.size() > 0
         ? new ResponseEntity<>(
             ResponseBuilder.buildBeaconResultsetsResponse(individuals, "individual"), HttpStatus.OK)
