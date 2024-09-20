@@ -61,22 +61,11 @@ public class IndividualDao {
     try {
       var queryContext = new QueryContext(limit, skip, filters);
       String queryString = IndividualQueryBuilderFactory.create(queryContext).build();
-      //      Map<String, Object> queryParams =
-      //          new HashMap<>() {
-      //            {
-      //              put("limit", limit);
-      //              put("offset", skip);
-      //            }
-      //          };
-      //      if (!filters.isEmpty()) {
-      //        queryParams.putAll(filters);
-      //      }
       var mapSqlParameterSource = new MapSqlParameterSource();
       mapSqlParameterSource.addValue("limit", limit);
       mapSqlParameterSource.addValue("offset", skip);
       filters.forEach(
           (key, value) -> mapSqlParameterSource.addValue(key, String.format("'%s'", value)));
-      //      queryParams.forEach(mapSqlParameterSource::addValue);
       result = jdbcTemplate.query(queryString, mapSqlParameterSource, filteredIndividualRowMapper);
     } catch (DataAccessException e) {
       log.error("Error getting list of individual data. Error: {}", e.getMessage());
