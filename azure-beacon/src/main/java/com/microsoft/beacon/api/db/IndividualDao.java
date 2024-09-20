@@ -1,6 +1,8 @@
 package com.microsoft.beacon.api.db;
 
 import com.microsoft.beacon.api.db.model.Individual;
+import com.microsoft.beacon.api.db.model.IndividualExtended;
+import com.microsoft.beacon.api.db.querybuilder.FilterKeys;
 import com.microsoft.beacon.api.db.querybuilder.QueryContext;
 import com.microsoft.beacon.api.db.querybuilder.individual.IndividualQueryBuilderFactory;
 import java.util.Collections;
@@ -29,12 +31,14 @@ public class IndividualDao {
               rs.getString("ethnicity"),
               rs.getString("url"));
 
-  private static final RowMapper<Individual> filteredIndividualRowMapper =
+  private static final RowMapper<IndividualExtended> filteredIndividualRowMapper =
       (rs, num) ->
-          new Individual(
+          new IndividualExtended(
               rs.getString("id"),
               rs.getString("sex"),
-              rs.getInt("ethnicity"),
+              rs.getInt("dataset_id"),
+              rs.getString("ethnicity"),
+              rs.getString("url"),
               rs.getString("disease_id_sum"),
               rs.getString("disease_str_sum"));
 
@@ -56,16 +60,25 @@ public class IndividualDao {
     }
   }
 
-  public List<Individual> listIndividuals(int skip, int limit, Map<String, String> filters) {
-    List<Individual> result = Collections.emptyList();
+  public List<IndividualExtended> listIndividuals(
+      int skip, int limit, Map<String, String> filters) {
+    List<IndividualExtended> result = Collections.emptyList();
     try {
       var queryContext = new QueryContext(limit, skip, filters);
       String queryString = IndividualQueryBuilderFactory.create(queryContext).build();
       var mapSqlParameterSource = new MapSqlParameterSource();
       mapSqlParameterSource.addValue("limit", limit);
       mapSqlParameterSource.addValue("offset", skip);
-      filters.forEach(
-          (key, value) -> mapSqlParameterSource.addValue(key, String.format("'%s'", value)));
+      if (!filters.isEmpty()) {
+        for (Map.Entry<String, String> kvp : filters.entrySet()) {
+          if (kvp.getKey().equals(FilterKeys.ETHNICITY_FILTER_KEY)
+              || kvp.getKey().equals(FilterKeys.DISEASE_FILTER_KEY)) {
+            mapSqlParameterSource.addValue(kvp.getKey(), "%" + kvp.getValue() + "%");
+          } else {
+            mapSqlParameterSource.addValue(kvp.getKey(), kvp.getValue());
+          }
+        }
+      }
       result = jdbcTemplate.query(queryString, mapSqlParameterSource, filteredIndividualRowMapper);
     } catch (DataAccessException e) {
       log.error("Error getting list of individual data. Error: {}", e.getMessage());

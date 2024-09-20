@@ -10,12 +10,12 @@ public class FilteredIndividualListQueryBuilder implements QueryBuilder {
   // :disease, :sex, :ethnicity are part of filter statement
   private static final String WHERE_CLAUSE = "where %s";
   private static final String SEX_WHERE_CLAUSE_FILTER = "i.sex = :sex";
-  private static final String ETHNICITY_WHERE_CLAUSE_FILTER = "i.ethnicity = :ethnicity";
+  private static final String ETHNICITY_WHERE_CLAUSE_FILTER = "i.ethnicity like :ethnicity";
   private static final String DISEASE_WHERE_CLAUSE_FILTER = "label like :disease";
 
   private static final String QUERY =
       """
-            select i.id, i.sex, i.ethnicity, ind_dis_summary.disease_id_sum, ind_dis_summary.disease_str_sum
+            select  i.id, i.sex, i.dataset_id, i.ethnicity, i.url, ind_dis_summary.disease_id_sum, ind_dis_summary.disease_str_sum
             from
                 individual i
                 inner join

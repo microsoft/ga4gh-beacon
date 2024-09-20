@@ -2,6 +2,7 @@ package com.microsoft.beacon.api.service;
 
 import com.microsoft.beacon.api.db.IndividualDao;
 import com.microsoft.beacon.api.db.model.Individual;
+import com.microsoft.beacon.api.db.model.IndividualExtended;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +27,8 @@ public class IndividualService {
     return individualDao.getIndividual(id);
   }
 
-  public List<Individual> getIndividuals(Integer skip, Integer limit, List<String> filters) {
+  public List<IndividualExtended> getIndividuals(
+      Integer skip, Integer limit, List<String> filters) {
     int limitValue = Optional.ofNullable(limit).orElse(LIST_INDIVIDUALS_LIMIT);
     int skipValue = Optional.ofNullable(skip).orElse(LIST_INDIVIDUALS_SKIP);
 
