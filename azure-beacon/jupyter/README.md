@@ -18,8 +18,14 @@ Make sure update the FULL_PATH with your path
 
 `psql -h 127.0.0.1 -p 5433 -U beaconapiuser -d beacon_api`
 
-`\COPY dataset FROM '[FULL_PATH]/dataset_table.csv' DELIMITER ',' CSV`
+`\COPY dataset FROM '[FULL_PATH]/ga4gh-beacon/azure-beacon/src/main/resources/db/test_data/dataset_table.csv' DELIMITER ',' CSV`
 
-`\COPY individual(id, sex, ethnicity, dataset_id, url) FROM '[FULL_PATH]/individual_table.csv' DELIMITER ',' CSV`
+`\COPY individual(id, sex, ethnicity, dataset_id, url) FROM '[FULL_PATH]/ga4gh-beacon/azure-beacon/src/main/resources/db/test_data/individual_table.csv' DELIMITER ',' CSV`
+
+`\COPY disease FROM '[FULL_PATH]/ga4gh-beacon/azure-beacon/src/main/resources/db/test_data//disease_table.csv' DELIMITER '>' CSV`
+
+`\COPY individual_disease FROM '[FULL_PATH]/ga4gh-beacon/azure-beacon/src/main/resources/db/test_data//individual_disease_table.csv' DELIMITER ',' CSV`
 
 # 4. Open the jupyter notebook and execute! 
+
+To do this you need to have jupyter lab or notebook installed.
